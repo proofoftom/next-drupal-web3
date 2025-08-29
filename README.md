@@ -8,6 +8,7 @@ A Next.js application with SIWE (Sign-In with Ethereum) authentication integrate
 - JWT token-based authentication with Drupal backend
 - User account creation and management in Drupal
 - CORS support for cross-origin requests
+- Article creation and viewing functionality
 
 ## How to use
 
@@ -46,6 +47,7 @@ The following environment variables are required:
 - `siwe` - For creating and parsing SIWE messages
 - `ethers` - For Ethereum wallet integration
 - `next-drupal` - For communicating with the Drupal backend
+- `date-fns` - For formatting dates
 
 ## Troubleshooting
 
@@ -60,6 +62,14 @@ The application automatically converts Ethereum addresses to EIP-55 checksum for
 ### JWT Token Expiration
 
 The application handles JWT token expiration by providing a refresh token that can be used to obtain a new access token.
+
+## Article Creation
+
+The application includes functionality for creating and viewing articles:
+
+- `/articles` - View a list of all articles
+- `/articles/create` - Create a new article (requires authentication)
+- `/articles/[id]` - View a single article
 
 ## Documentation
 

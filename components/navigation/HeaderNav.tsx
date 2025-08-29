@@ -10,6 +10,12 @@ export function HeaderNav() {
         </Link>
         <div className="flex items-center space-x-4">
           <Link
+            href="/articles"
+            className="hover:text-blue-600"
+          >
+            Articles
+          </Link>
+          <Link
             href="https://next-drupal.org/docs"
             target="_blank"
             rel="external"
