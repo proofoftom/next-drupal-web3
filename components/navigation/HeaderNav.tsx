@@ -1,4 +1,5 @@
 import { Link } from "@/components/navigation/Link"
+import { SiweLogin } from "@/components/auth/SiweLogin"
 
 export function HeaderNav() {
   return (
@@ -7,14 +8,17 @@ export function HeaderNav() {
         <Link href="/" className="text-2xl font-semibold no-underline">
           Next.js for Drupal
         </Link>
-        <Link
-          href="https://next-drupal.org/docs"
-          target="_blank"
-          rel="external"
-          className="hover:text-blue-600"
-        >
-          Read the docs
-        </Link>
+        <div className="flex items-center space-x-4">
+          <Link
+            href="https://next-drupal.org/docs"
+            target="_blank"
+            rel="external"
+            className="hover:text-blue-600"
+          >
+            Read the docs
+          </Link>
+          <SiweLogin />
+        </div>
       </div>
     </header>
   )

@@ -13,10 +13,13 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "ethers": "^6.15.0",
     "next": "^15.1.2",
+    "next-drupal": "^2.0.0-beta.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "next-drupal": "^2.0.0-beta.2"
+    "siwe": "^3.0.0",
+    "wagmi": "^2.16.8"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.12",
