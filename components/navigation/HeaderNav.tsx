@@ -1,7 +1,18 @@
+"use client"
+
 import { Link } from "@/components/navigation/Link"
 import { SiweLogin } from "@/components/auth/SiweLogin"
+import { useState, useEffect } from "react"
 
 export function HeaderNav() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+  useEffect(() => {
+    // Check if user is authenticated
+    const accessToken = localStorage.getItem("access_token")
+    setIsAuthenticated(!!accessToken)
+  }, [])
+
   return (
     <header>
       <div className="container flex items-center justify-between py-6 mx-auto">
@@ -9,12 +20,14 @@ export function HeaderNav() {
           Next.js for Drupal
         </Link>
         <div className="flex items-center space-x-4">
-          <Link
-            href="/articles"
-            className="hover:text-blue-600"
-          >
+          <Link href="/articles" className="hover:text-blue-600">
             Articles
           </Link>
+          {isAuthenticated && (
+            <Link href="/articles/create" className="hover:text-blue-600">
+              Create Article
+            </Link>
+          )}
           <Link
             href="https://next-drupal.org/docs"
             target="_blank"
