@@ -44,6 +44,19 @@ export function SiweLogin() {
       // Convert address to checksum format
       const checksumAddress = ethers.getAddress(userAddress)
 
+      // Lookup ENS name
+      const provider = new ethers.BrowserProvider(window.ethereum)
+      let ensName = await provider.lookupAddress(userAddress)
+
+      // Always verify the forward resolution
+      if (ensName) {
+        const resolvedAddress = await provider.resolveName(ensName)
+        if (resolvedAddress !== checksumAddress) {
+          // If verification fails, reset to null
+          ensName = null
+        }
+      }
+
       // Get nonce from Drupal
       const nonceRes = await fetch(
         `${process.env.NEXT_PUBLIC_DRUPAL_BASE_URL}/api/siwe/nonce`
@@ -59,12 +72,12 @@ export function SiweLogin() {
         version: "1",
         chainId: 1,
         nonce,
+        ...(ensName && { resources: [`ens:${ensName}`] }), // Format as ENS URI
       })
 
       const preparedMessage = message.prepareMessage()
 
       // Sign message
-      const provider = new ethers.BrowserProvider(window.ethereum)
       const signer = await provider.getSigner()
       const signature = await signer.signMessage(preparedMessage)
 
