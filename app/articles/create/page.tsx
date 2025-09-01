@@ -48,8 +48,10 @@ export default function CreateArticlePage() {
         }
       )
 
-      // Redirect to the newly created article
-      router.push(`/articles/${article.id}`)
+      console.log("Path alias:", article.path?.alias)
+
+      // Redirect to the newly created article using its path alias
+      router.push(article.path?.alias || `/articles/${article.id}`)
     } catch (err: unknown) {
       console.error("Error creating article:", err)
       if (err instanceof Error) {

@@ -20,9 +20,6 @@ export function HeaderNav() {
           Next.js for Drupal
         </Link>
         <div className="flex items-center space-x-4">
-          <Link href="/articles" className="hover:text-blue-600">
-            Articles
-          </Link>
           {isAuthenticated && (
             <Link href="/articles/create" className="hover:text-blue-600">
               Create Article

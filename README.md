@@ -67,9 +67,10 @@ The application handles JWT token expiration by providing a refresh token that c
 
 The application includes functionality for creating and viewing articles:
 
-- `/articles` - View a list of all articles
+- `/` - View a list of all articles (front page)
 - `/articles/create` - Create a new article (requires authentication)
-- `/articles/[id]` - View a single article
+- `/[article-slug]` - View a single article (e.g., /my-article-title)
+- `/articles/[id]` - View a single article by ID (redirects to slug URL)
 
 ## Documentation
 
